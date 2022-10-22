@@ -222,8 +222,7 @@ mark .md-meta { color: rgb(0, 0, 0); }
 @include-when-export url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
-    --text-color: #202124;
-    --blur-text-color: #c8c8c8;
+    --text-color: #333333;
     --bg-color: #ffffff;
     --control-text-color: var(--text-color);
     --meta-content-color: var(--text-color);
@@ -232,31 +231,31 @@ mark .md-meta { color: rgb(0, 0, 0); }
     --item-hover-bg-color: #E5E5E596;
     --active-file-bg-color: var(--item-hover-bg-color);
 
-    --blur-text-color: rgba(32, 33, 36, 0.5);
-    --drake-accent: #5784ec;
-    --drake-highlight: #3a474e;
-    --a-color: #1769e0;
-    --variable-color: #d01884;
+    --blur-text-color: rgba(51, 51, 51, 0.5);
+    --drake-accent: #e95f59;
+    --drake-highlight: #d63200;
+    --a-color: var(--drake-highlight);
+    --variable-color: var(--drake-highlight);
     --outline-active-color: var(--a-color);
-    --code-block-bg-color: #f8f9fa;
-    --code-block-color: #3a474e;
-    --title-color: #202124;
-    --blockquote-border-color: #275796;
-    --blockquote-color: #275796;
-    --blockquote-bg-color: #e5f4fd;
+    --code-block-bg-color: #f6f8fa;
+    --code-block-color: #24292e;
+    --title-color: #273849;
+    --blockquote-border-color: var(--drake-accent);
+    --blockquote-color: var(--text-color);
+    --blockquote-bg-color: #fdefee;
     --strong-color: var(--title-color);
     --h2-underline-color: var(--title-color);
     --horizontal-divider-color: var(--title-color);
-    --height-light-color: var(--text-color);
-    --height-light-border-color: var(--text-color);
+    --height-light-color: var(--drake-highlight);
+    --height-light-border-color: var(--drake-highlight);
     --yaml-color: #777777;
     --yaml-bg-color: #f7f7f7;
     --footnotes-bg-color: #3c3d3e;
     --footnotes-highlight: #FFD760;
-    --table-border-color: #dadce0;
-    --table-header-bg-color: #f1f3f4;
+    --table-border-color: #dfe2e5;
+    --table-header-bg-color: #f8f8f8;
     --table-bg-color: var(--bg-color);
-    --table-n2-bg-color: var(--bg-color);
+    --table-n2-bg-color: #f8f8f8;
     --input-bg-color: var(--item-hover-bg-color);
     --btn-hover-bg-color: var(--item-hover-bg-color);
     --checkbox-checked: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cpath d='M425.984 726.016l384-384-59.99-61.995-324.01 324.011-152.021-152.021L213.973 512zm384-598.016q36.01 0 61.013 25.984T896 213.974v596.01q0 34.005-25.003 59.99t-61.013 25.983h-596.01q-36.011 0-61.014-25.984t-25.003-59.989v-596.01q0-34.006 25.003-59.99T213.973 128h596.011z' fill='%2365b73b'/%3E%3C/svg%3E");
@@ -285,12 +284,12 @@ p {
 /*code block*/
 .md-fences {
     font-size: 1rem;
-    padding: 12px !important;
-    border-radius: 8px;
+    padding: 0.5rem !important;
+    border-radius: 2px;
     word-wrap: normal;
     background-color: var(--code-block-bg-color);
     color: var(--code-block-color);
-    border: .1em solid #e8eaed;
+    border: none;
     line-height: var(--code-line-height);
 }
 
@@ -425,12 +424,8 @@ pre.md-fences-advanced.md-focus .md-fences-adv-panel {
 
 /*code snippet*/
 #write code, tt {
-    margin: 0 4px;
+    margin: 0 2px;
     color: var(--drake-highlight);
-    border: .1rem solid #e8eaed;
-    background: #f8f9fa;
-    border-radius: 4px;
-    padding: .1rem .4rem;
 }
 
 /*variable*/
@@ -467,9 +462,21 @@ var {
 }
 
 /*quote block*/
+blockquote:before {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 4px;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: var(--blockquote-border-color);
+    border-radius: 2px;
+}
+
 blockquote {
-    color: var(--blockquote-color) !important;
-    border-radius: 4px;
+    color: var(--blockquote-color);
+    border-radius: 2px;
     padding: 10px 16px;
     background-color: var(--blockquote-bg-color);
     position: relative;
@@ -485,13 +492,6 @@ blockquote {
 }
 
 /*link*/
-.on-focus-mode #write a .md-plain:hover, .on-focus-mode .md-htmlblock-container a:hover {
-    border-bottom: .1rem solid var(--blur-text-color);
-}
-#write a .md-plain:hover, .md-htmlblock-container a:hover,
-.on-focus-mode #write .md-focus a .md-plain:hover, .on-focus-mode .md-focus .md-htmlblock-container a:hover {
-    border-bottom: .1rem solid var(--a-color);
-}
 #write a {
     color: var(--a-color);
     text-decoration: none;
@@ -499,16 +499,18 @@ blockquote {
 #write h2 a .md-plain {
     border-bottom: .2rem solid var(--a-color);
 }
+.on-focus-mode #write a .md-plain, .on-focus-mode .md-htmlblock-container a:hover {
+    border-bottom: .1rem solid var(--blur-text-color);
+}
+#write a .md-plain, .md-htmlblock-container a:hover,
+.on-focus-mode #write .md-focus a .md-plain, .md-focus .md-htmlblock-container a:hover {
+    border-bottom: .1rem solid var(--a-color);
+}
 [md-inline=link] a {
     margin: 0 .2rem;
 }
-#write a code, a:any-link {
+a:any-link {
     color: var(--a-color);
-}
-#write a code:hover {
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    text-decoration-thickness: 0.1em;
 }
 
 img {
@@ -1283,10 +1285,10 @@ a.ty-link {
     color: var(--code-block-color);
 }
 .cm-s-inner span.cm-number {
-    color: #c5221f;
+    color: #4A86E8;
 }
 .cm-s-inner span.cm-atom {
-    color: #c5221f;
+    color: #9E880D;
 }
 .cm-s-inner span.cm-def {
     color: #00f;
@@ -1298,19 +1300,19 @@ a.ty-link {
     color: #00627A;
 }
 .cm-s-inner span.cm-variable-3, .cm-s-inner span.cm-type {
-    color: #9334e6;
+    color: #00627A;
 }
 .cm-s-inner span.cm-property {
     color: var(--code-block-color);
 }
 .cm-s-inner span.cm-keyword {
-    color: #1967d2;
+    color: #708;
 }
 .cm-s-inner span.cm-operator {
     color: var(--code-block-color);
 }
 .cm-s-inner span.cm-comment {
-    color: #b80672;
+    color: #787878;
 }
 .cm-s-inner span.cm-string {
     color: #008000;
@@ -1325,10 +1327,10 @@ a.ty-link {
     color: red;
 }
 .cm-s-inner span.cm-attribute {
-    color: #9334e6;
+    color: var(--code-block-color);
 }
-.cm-s-inner span.cm-tag.cm-bracket {
-    color: #1967d2;
+.cm-s-inner span.cm-tag {
+    color: var(--code-block-color);
 }
 .cm-s-inner span.cm-link {
     color: #4A86E8;
@@ -1336,8 +1338,8 @@ a.ty-link {
 .cm-s-inner span.cm-builtin {
     color: var(--code-block-color);
 }
-.cm-s-inner .cm-meta {
-    color: #c5221f;
+.cm-s-inner span.cm-bracket {
+    color: var(--code-block-color);
 }
 .cm-s-inner .CodeMirror-gutters {
     border-right: 1px solid rgba(120, 120, 120, 0.3);
@@ -1347,9 +1349,9 @@ a.ty-link {
 }
 
 
-</style><title></title>
+</style><title>assign</title>
 </head>
 <body class='typora-export os-windows'><div class='typora-export-content'>
-<div id='write'  class=''><h5 id='关于文献讨论会'><span>关于文献讨论会：</span></h5><p><img src=".assets\image-20221021174356608.png" alt="image-20221021174356608" style="zoom:80%;" /></p><h5 id='近期安排'><span>近期安排：</span></h5><p><img src=".assets/image-20221021174822170.png" alt="image-20221021174822170" style="zoom:80%;" /></p><p><span>文献1：</span><a href='https://box.nju.edu.cn/f/022f8a04e27c4113bc9c/' target='_blank' class='url'>https://box.nju.edu.cn/f/022f8a04e27c4113bc9c/</a></p><p>&nbsp;</p><p><img src=".assets/image-20221021174915173.png" alt="image-20221021174915173" style="zoom:80%;" /></p><p><span>文献2：</span><a href='https://box.nju.edu.cn/f/8a148ff7f4814bc095ee/' target='_blank' class='url'>https://box.nju.edu.cn/f/8a148ff7f4814bc095ee/</a></p><h5 ><span>其他：</span></h5><p><img src=".assets/image-20221021175024248.png" alt="image-20221021175024248" style="zoom: 85%;" /></p><p><img src=".assets/image-20221021175036818.png" alt="image-20221021175036818" style="zoom: 78%;" /></p><p><img src=".assets/image-20221021175104867.png" alt="image-20221021175104867" style="zoom:64%;" /></p><p><img src=".assets/image-20221021175114057.png" alt="image-20221021175114057" style="zoom:69%;" /></p></div></div>
+<div id='write'  class=''><h5 id='关于文献讨论会'><span>关于文献讨论会：</span></h5><p><img src=".assets/image-20221021174356608.png" alt="image-20221021174356608" style="zoom:80%;" /></p><h5 id='近期安排'><span>近期安排：</span></h5><p><img src=".assets/image-20221021174822170.png" alt="image-20221021174822170" style="zoom:80%;" /></p><p><img src="assign.assets/image-20221021233736463.png" alt="image-20221021233736463" style="zoom:80%;" /></p><p><span>文献1：</span><a href='https://box.nju.edu.cn/f/022f8a04e27c4113bc9c/' target='_blank' class='url'>https://box.nju.edu.cn/f/022f8a04e27c4113bc9c/</a></p><hr /><p><img src=".assets/image-20221021174915173.png" alt="image-20221021174915173" style="zoom:80%;" /></p><p><span>文献2：</span><a href='https://box.nju.edu.cn/f/8a148ff7f4814bc095ee/' target='_blank' class='url'>https://box.nju.edu.cn/f/8a148ff7f4814bc095ee/</a></p><hr /><p><img src="assign.assets/image-20221021233538474.png" alt="image-20221021233538474" style="zoom:80%;" /></p><h5 id='其他'><span>其他：</span></h5><p><img src=".assets/image-20221021175024248.png" alt="image-20221021175024248" style="zoom: 85%;" /></p><p><img src=".assets/image-20221021175036818.png" alt="image-20221021175036818" style="zoom: 78%;" /></p><p><img src=".assets/image-20221021175104867.png" alt="image-20221021175104867" style="zoom:64%;" /></p><p><img src=".assets/image-20221021175114057.png" alt="image-20221021175114057" style="zoom:69%;" /></p></div></div>
 </body>
 </html>
