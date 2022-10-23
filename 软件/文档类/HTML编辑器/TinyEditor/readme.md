@@ -14,5 +14,5 @@ data:text/html,<body oninput="i.srcdoc=h.value+'<style>'+c.value+'</style><scrip
 
 示例：
 
-<img src="C:\Users\DaiZikun\AppData\Roaming\Typora\typora-user-images\image-20221003213747298.png" alt="image-20221003213747298" style="zoom:50%;" />
+<img src="../../../img/image-20221003213747298.png" alt="image-20221003213747298" style="zoom:50%;" />
 

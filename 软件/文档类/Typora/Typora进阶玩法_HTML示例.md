@@ -15,14 +15,14 @@
 
 <b>纯图片</b>
 
-<img src="https://s.cn.bing.net/th?id=OHR.ChongyangFestival_ZH-CN5260976551_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&qlt=50" style="zoom:20%;">
+<img src="../../img/th" style="zoom:20%;">
 
 <b>带标题的图片</b>
 
 <div>
     <center>
         <img
-             src="https://s.cn.bing.net/th?id=OHR.ChongyangFestival_ZH-CN5260976551_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&qlt=50" 
+             src="../../img/th" 
              style="zoom:20%;" />
         <br>
         <font> <!-- 注释内容：自选参数size face color -->图1-1 示例图片</font>
@@ -146,11 +146,8 @@ RGB表示：
 
 <iframe src="https://baike.baidu.com/item/%E5%8D%97%E4%BA%AC%E5%A4%A7%E5%AD%A6?fromModule=lemma_search-box" style="width:800px; height:500px;" frameborder="0"></iframe>
 
-<b>查看pdf</b>
-
-
-<embed id="pdfPlayer" src="E:\Users\Lenovo\Desktop\HW2.pdf" type="application/pdf" width="100%" height="600" >
 <b>内嵌视频</b>
+
 
 <iframe src="//player.bilibili.com/player.html?aid=815198210&bvid=BV1XG4y167gD&cid=824410901&page=1" scrolling="no" border="0" height="500"frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
